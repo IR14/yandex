@@ -1,0 +1,23 @@
+# 'Cat', 'cat' => True
+# 'Cats', 'cat' => False
+# 'cats', 'cat' => True
+# '', '' => True
+# 'cads', 'cats' => True
+
+def oneChange(str1, str2):
+  if str1 == str2:
+    return True
+
+  l1 = len(str1)
+  l2 = len(str2)
+
+  for i, v in enumerate(str1):
+    if v != str2[i]:
+      print(v, ' ', i)
+      if l1 == l2:
+        return str1[:i] == str2[:i] and str1[i+1:] == str2[i+1:]
+
+      if l1 > l2:
+        return str1[:i] + str1[i+1:] == str2
+
+      return str1 == str2[:i] + str2[i+1:]
