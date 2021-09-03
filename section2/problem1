@@ -1,0 +1,22 @@
+# [" ", "5"] => ["%", "2", "0", "5"] without new memory if len of resultList would be len(startList) + spaceCount*2
+
+def changeList(arr):
+  n = len(arr)
+  
+  spaceCount = 0
+  for i in arr:
+    if i == " ":
+      spaceCount += 1
+      
+  arr += [""] * spaceCount * 2
+  
+  k = len(arr) - 1
+  
+  for i in range(n - 1, -1, -1):
+    if arr[i] == " ":
+      arr[k], arr[k-1], arr[k-2] = "0", "2", "%"
+      k -= 3
+    else:
+      arr[k] = arr[i]
+      k -= 1
+  
